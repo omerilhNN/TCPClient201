@@ -17,7 +17,6 @@ int connectSocket(SOCKET s) {
     FD_SET(s, &fdE);
     int max_fd = s + 1;
 
-    //Windosw
     switch (select(max_fd, NULL, &fdW, &fdE, &tv)) {
     case SOCKET_ERROR:
         return SOCKET_ERROR;
@@ -44,8 +43,6 @@ int main() {
     char* hello = "Hello from client";
     char buffer[1024] = { 0 };
     int valread;
-    fd_set wfds, efds;
-
 
     // Initialize Winsock
     if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0) {
